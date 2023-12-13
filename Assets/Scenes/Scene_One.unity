@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &159965953 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7197103808362478073, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+  m_PrefabInstance: {fileID: 1026409976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &227158922 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7197103808362478073, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+  m_PrefabInstance: {fileID: 6953087251081373097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &266508328
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,9 +637,29 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: OtherCube
+      value: 
+      objectReference: {fileID: 334018076}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: Particles
+      value: 
+      objectReference: {fileID: 159965953}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: CurrentCube
+      value: 
+      objectReference: {fileID: 624268837}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
       propertyPath: m_OtherCube
       value: 
       objectReference: {fileID: 334018076}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: VerticalAxisName
+      value: VerticalArrows
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: HorizontalAxisName
+      value: HorizontalArrows
+      objectReference: {fileID: 0}
     - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
       propertyPath: m_VerticalAxisName
       value: VerticalArrows
@@ -834,8 +864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb30167c55fdaf148802a0e5a1fa5733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Balls: []
-  m_PatternBall: {fileID: 3366664709155827836, guid: e9d8e5787e0da6b4084f0b48a91a953f, type: 3}
+  Balls: []
+  PatternBall: {fileID: 3366664709155827836, guid: e9d8e5787e0da6b4084f0b48a91a953f, type: 3}
 --- !u!4 &1693932648
 Transform:
   m_ObjectHideFlags: 0
@@ -948,11 +978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b489c15d866e54c995413622416d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cube: {fileID: 334018076}
-  m_OtherCube: {fileID: 624268837}
-  m_Text: {fileID: 1257772207}
-  m_SceneManager: {fileID: 266508329}
-  m_BallsManager: {fileID: 1693932647}
+  FirstCube: {fileID: 334018076}
+  OtherCube: {fileID: 624268837}
+  TextObj: {fileID: 1257772207}
+  SceneManager: {fileID: 266508329}
+  BallsManager: {fileID: 1693932647}
 --- !u!4 &1916061690
 Transform:
   m_ObjectHideFlags: 0
@@ -1053,9 +1083,29 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: OtherCube
+      value: 
+      objectReference: {fileID: 624268837}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: Particles
+      value: 
+      objectReference: {fileID: 227158922}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: CurrentCube
+      value: 
+      objectReference: {fileID: 334018076}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
       propertyPath: m_OtherCube
       value: 
       objectReference: {fileID: 624268837}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: VerticalAxisName
+      value: VerticalWASD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
+      propertyPath: HorizontalAxisName
+      value: HorizontalWASD
+      objectReference: {fileID: 0}
     - target: {fileID: 1574249652666447176, guid: 4cc01db1782da11408b0134c1ff41a49, type: 3}
       propertyPath: m_VerticalAxisName
       value: VerticalWASD

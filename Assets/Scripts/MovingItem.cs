@@ -8,13 +8,14 @@ using static UnityEngine.ParticleSystem;
 
 public class MovingItem : MonoBehaviour
 {
-    public Rigidbody m_Cube;
-    public Rigidbody m_OtherCube;
-    public ParticleSystem m_Particles;
+    [SerializeField] private Rigidbody CurrentCube;
+    [SerializeField] private Rigidbody OtherCube;
+    [SerializeField] private ParticleSystem Particles;
 
-    public string m_HorizontalAxisName;
-    public string m_VerticalAxisName;
-    private float m_Speed = 10;
+    [SerializeField] private string HorizontalAxisName;
+    [SerializeField] private string VerticalAxisName;
+
+    private const float SPEED = 10;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class MovingItem : MonoBehaviour
 
     void Update()
     {
-        if (m_Cube == null)
+        if (CurrentCube == null)
             return;
 
         UpdateMovement();
@@ -32,25 +33,25 @@ public class MovingItem : MonoBehaviour
 
     private void UpdateParticalsDirection()
     {
-        if (m_OtherCube == null)
+        if (OtherCube == null)
             return;
         
-        Vector3 heading = m_OtherCube.position - m_Cube.position;
+        Vector3 heading = OtherCube.position - CurrentCube.position;
         Vector3 direction = heading.normalized;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        m_Particles.transform.rotation = Quaternion.Slerp(m_Particles.transform.rotation, rotation, Time.deltaTime * m_Speed);
+        Particles.transform.rotation = Quaternion.Slerp(Particles.transform.rotation, rotation, Time.deltaTime * SPEED);
     }
 
     private void UpdateMovement()
     {
-        if (m_HorizontalAxisName == string.Empty || m_VerticalAxisName == string.Empty)
+        if (HorizontalAxisName == string.Empty || VerticalAxisName == string.Empty)
             return;
 
-        float h = Input.GetAxis(m_HorizontalAxisName);
-        float v = Input.GetAxis(m_VerticalAxisName);
-        Vector3 movement = new Vector3(h * m_Speed, m_Cube.velocity.y, v * m_Speed);
-        m_Cube.AddForce(movement);
+        float h = Input.GetAxis(HorizontalAxisName);
+        float v = Input.GetAxis(VerticalAxisName);
+        Vector3 movement = new Vector3(h * SPEED, CurrentCube.velocity.y, v * SPEED);
+        CurrentCube.AddForce(movement);
     }
 }

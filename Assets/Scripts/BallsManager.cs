@@ -6,10 +6,14 @@ using Random = UnityEngine.Random;
 
 public class BallsManager : MonoBehaviour
 {
-    public List<GameObject> m_Balls = new List<GameObject>();
-    public GameObject m_PatternBall;
+    [SerializeField] private List<GameObject> Balls = new List<GameObject>();
+    [SerializeField] private GameObject PatternBall;
 
-    private bool m_CurrentVisible = true;
+    private bool currentVisible = true;
+
+    private const int MAX_BALLS = 20;
+    private const float BALL_RADIUS = 10;
+
     void Start()
     {
         CreateBalls();
@@ -17,45 +21,41 @@ public class BallsManager : MonoBehaviour
     }
 
     private void CreateBalls()
-    {
-        int count = 20;
-        float ball_radius = 10;
-        List<float> x_coords = new List<float>();
-        List<float> z_coords = new List<float>();
+    {        
+        List<float> xCords = new List<float>();
+        List<float> zCoords = new List<float>();
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < MAX_BALLS; i++)
         {
-            x_coords.Add(Random.Range(0, 59));
-            z_coords.Add(Random.Range(0, 59));
+            xCords.Add(Random.Range(0, 59));
+            zCoords.Add(Random.Range(0, 59));
         }
 
-        //x_coords.Sort();
-        //z_coords.Sort();
-
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < MAX_BALLS; i++)
         {
-            float x_coord = x_coords[i] * ball_radius - (300 - ball_radius);
-            float z_coord = z_coords[i] * ball_radius - (300 - ball_radius);
-            GameObject new_ball = Instantiate(m_PatternBall, new Vector3(x_coord, 0, z_coord), Quaternion.identity);
-            new_ball.layer = 7;
-            Material new_material = new Material(Shader.Find("Standard"));
-            new_material.SetColor("_Color", Random.ColorHSV());
-            MeshRenderer render = new_ball.GetComponent<MeshRenderer>();
-            render.material = new_material;
-            m_Balls.Add(new_ball);
+            float xCoord = xCords[i] * BALL_RADIUS - (300 - BALL_RADIUS);
+            float zCoord = zCoords[i] * BALL_RADIUS - (300 - BALL_RADIUS);
+            GameObject newBall = Instantiate(PatternBall, new Vector3(xCoord, 0, zCoord), Quaternion.identity);
+            newBall.layer = 7;
+            Material newMaterial = new Material(Shader.Find("Standard"));
+            newMaterial.SetColor("_Color", Random.ColorHSV());
+            MeshRenderer render = newBall.GetComponent<MeshRenderer>();
+            render.material = newMaterial;
+            Balls.Add(newBall);
         }
     }
 
-    public void ChangeVisible(bool a_Visible)
+    public void ChangeVisible(bool visible)
     {
-        if (m_CurrentVisible == a_Visible)
+        if (currentVisible == visible)
             return;
-        m_CurrentVisible = a_Visible;
 
-        if (m_CurrentVisible == false)
+        currentVisible = visible;
+
+        if (currentVisible == false)
             Camera.main.cullingMask &= ~(1 << 7);
 
-        if (m_CurrentVisible == true)
+        if (currentVisible == true)
             Camera.main.cullingMask |= (1 << 7); ;
 
     }

@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private const string SECOND_SCENE_NAME = "Scene_Two";
+
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void LoadSecondScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Scene_Two");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SECOND_SCENE_NAME);
     }
-
 }
